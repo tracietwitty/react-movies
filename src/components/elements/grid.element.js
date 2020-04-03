@@ -1,4 +1,4 @@
 import React from 'react';
 
-const Grid = () => {};
+const Grid = () => <div>Grid</div>;
 export default Grid;
