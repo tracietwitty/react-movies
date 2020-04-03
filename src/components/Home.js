@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import {
 	API_URL,
 	API_KEY,
-	API_BASE_URL,
 	POSTER_SIZE,
 	IMAGE_BASE_URL,
 	BACKDROP_SIZE
@@ -33,6 +32,17 @@ const Home = () => {
 	] = useHomeFetch();
 	const [searchTerm, setSearchTerm] = useState('');
 
+	const loadMoreMovies = () => {
+		const searchEndpoint = `${API_URL}search/movie?api_key=${API_KEY}&query=${searchTerm}&page=${currentPage +
+			1}`;
+		const popularEndpoint = `${API_URL}movie/popular?api_key=${API_KEY}&page=${currentPage +
+			1}`;
+
+		const endpoint = searchTerm ? searchEndpoint : popularEndpoint;
+
+		fetchMovies(endpoint);
+	};
+
 	if (error) return <div>Something went wrong on our end...</div>;
 	if (!movies[0]) return <Spinner />;
 	return (
@@ -58,9 +68,8 @@ const Home = () => {
 					/>
 				))}
 			</Grid>
-			<Spinner />
-			<MovieThumb />
-			<LoadButton />
+			{loading && <Spinner />}
+			<LoadButton text='Load More' callback={loadMoreMovies} />
 		</div>
 	);
 };
