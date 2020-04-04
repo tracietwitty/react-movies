@@ -4,7 +4,6 @@ import { IMAGE_BASE_URL, POSTER_SIZE } from '../../config';
 import MovieThumb from './MovieThumb.element';
 
 import { StyledMovieInfo } from '../styles/StyledMovieInfo';
-import Movie from '../Movie';
 
 const MovieInfo = ({ movie }) => (
 	<StyledMovieInfo backdrop={movie.backdrop_path}>
