@@ -16,6 +16,6 @@ const Navigation = ({ movie }) => (
 );
 
 Navigation.propTypes = {
-	movie: PropTypes.object
+	movie: PropTypes.string
 };
 export default Navigation;
