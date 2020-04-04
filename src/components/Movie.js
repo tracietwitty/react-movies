@@ -9,16 +9,24 @@ import Actor from '../components/elements/Actor.elemenent';
 import Grid from '../components/elements/Grid.element';
 import Spinner from '../components/elements/Spinner.element';
 
-const Movie = ({ movieId }) => (
-	<div>
-		<Navigation />
-		<MovieInfo />
-		<MovieInfoBar />
-		<Grid>
-			<Actor />
-		</Grid>
-		<Spinner />
-	</div>
-);
+// import custom hooks:
+import { useMovieFetch } from '../components/hooks/useMovieFetch';
+
+const Movie = ({ movieId }) => {
+	const [movie, loading, error] = useMovieFetch(movieId);
+	console.log(movie);
+
+	return (
+		<div>
+			<Navigation />
+			<MovieInfo />
+			<MovieInfoBar />
+			<Grid>
+				<Actor />
+			</Grid>
+			<Spinner />
+		</div>
+	);
+};
 
 export default Movie;
