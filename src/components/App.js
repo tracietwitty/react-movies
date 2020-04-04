@@ -16,8 +16,6 @@ const App = () => {
 				<Movie path='/:movieId' />
 				<NotFound default />
 			</Router>
-
-			<Home />
 			<GlobalStyle />
 		</div>
 	);
